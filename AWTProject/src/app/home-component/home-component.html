@@ -1,0 +1,21 @@
+<div class="header">
+	<h1>CinemaApp</h1>
+	<div class="nav-buttons">
+		<button>Home</button>
+		<button>My Reservations</button>
+		<button>Login</button>
+	</div>
+</div>
+<div class="content">
+	<div class="movie-card" *ngFor="let movie of movies">
+		<img [src]="movie.posterUrl" alt="{{ movie.title }}">
+		<div class="movie-info">
+			<h3>{{ movie.title }}</h3>
+			<p>{{ movie.duration }} min</p>
+			<button>See sessions</button>
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<p>2025</p>
+</div>
