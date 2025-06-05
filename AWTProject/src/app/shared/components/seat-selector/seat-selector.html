@@ -1,0 +1,25 @@
+<div class="seat-selector">
+  <h2>Select your seats</h2>
+
+  <div class="screen">Screen</div>
+
+  <div class="seats-grid">
+    <div 
+      *ngFor="let seat of seats"
+      class="seat"
+      [ngClass]="{
+        'occupied': seat.isReserved,
+        'selected': isSelected(seat)
+      }"
+      (click)="toggleSeat(seat)"
+    >
+      <p>{{ seat.row }} {{seat.number}}</p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button [disabled]="selectedSeats.length === 0" (click)="confirmSelection()">
+      Confirm Reservation
+    </button>
+  </div>
+</div>

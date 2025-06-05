@@ -1,0 +1,16 @@
+<div class="session-card">
+	<div class="info">
+		<div class="session-card">
+			<div class="info">
+				<span class="time">{{ session.dateTime}}</span>
+				<span>{{ session.language }} {{ session.isSubtitled ? '(Subtitled)' : '' }}</span>
+				<span>Screen: {{ session.screenName }}</span>
+			</div>
+			<button class="book-button" [routerLink]="['/sessions', session.sessionId, 'seats']">
+				Book
+			</button>
+		</div>
+
+	</div>
+	<button class="book-button" routerLink="reservation/">Book Now</button>
+</div>

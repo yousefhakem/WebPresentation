@@ -2,8 +2,9 @@
 	<h1>CinemaApp</h1>
 	<div class="nav-buttons">
 		<button>Home</button>
-		<button>My Reservations</button>
-		<button>Login</button>
+		<button routerLink="/account">My Reservations</button>
+		<button routerLink="/login">Login</button>
+
 	</div>
 </div>
 <div class="content">
@@ -12,7 +13,8 @@
 		<div class="movie-info">
 			<h3>{{ movie.title }}</h3>
 			<p>{{ movie.duration }} min</p>
-			<button>See sessions</button>
+			<button [routerLink]="['/movie', movie.id]" class="button-link">See sessions</button>
+
 		</div>
 	</div>
 </div>

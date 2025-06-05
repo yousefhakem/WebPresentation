@@ -1,0 +1,28 @@
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 30px);
+  gap: 0.4rem;
+  justify-content: center;
+
+  .seat {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #cfd8dc;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &.selected {
+      background-color: #005caa;
+    }
+
+    &.occupied {
+      background-color: #757575;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(.occupied):not(.selected) {
+      background-color: #90caf9;
+    }
+  }
+}

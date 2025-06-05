@@ -1,0 +1,19 @@
+<div class="reservation-summary">
+  <h2>Reservation Summary</h2>
+
+  <div class="movie-info">
+    <p><strong>Movie:</strong> {{ movieTitle }}</p>
+    <p><strong>Date:</strong> {{ dateTime}}</p>
+    <p><strong>Language:</strong> {{ language }}</p>
+    <p><strong>Screen:</strong> {{ screenName }}</p>
+  </div>
+
+  <div class="seats-info">
+    <p><strong>Seats:</strong> {{ seats.join(', ') }}</p>
+    <p><strong>Total:</strong> €{{ totalPrice }}</p>
+  </div>
+
+  <div class="confirm-button">
+    <button (click)="confirmReservation()">Confirm</button>
+  </div>
+</div>
