@@ -8,15 +8,7 @@
 	</div>
 </div>
 <div class="content">
-	<div class="movie-card" *ngFor="let movie of movies">
-		<img [src]="movie.posterUrl" alt="{{ movie.title }}">
-		<div class="movie-info">
-			<h3>{{ movie.title }}</h3>
-			<p>{{ movie.duration }} min</p>
-			<button [routerLink]="['/movie', movie.id]" class="button-link">See sessions</button>
-
-		</div>
-	</div>
+	<app-movie-card class="movie-card" *ngFor="let movie of movies"/>
 </div>
 <div class="footer">
 	<p>2025</p>

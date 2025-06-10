@@ -3,10 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../shared/models/movie.model';
 import { MovieService } from '../shared/services/movie.service';
 import { RouterModule } from '@angular/router';
+import { MovieCard } from "../shared/components/movie-card/movie-card";
 
 @Component({
   selector: 'app-home-component',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, MovieCard],
   templateUrl: './home-component.html',
   styleUrl: './home-component.scss'
 })

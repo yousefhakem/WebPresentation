@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Session } from '../shared/models/session.model';
 //import { RouterLink } from '@angular/router';
 //import { Movie } from '../shared/models/movie.model';
 //import { Session } from '../shared/models/session.model';
@@ -10,15 +11,13 @@ import { Component, Input } from '@angular/core';
   styleUrl: './reservation-summary.scss'
 })
 
-export class ReservationSummaryComponent {
+export class ReservationSummary {
   @Input() movieTitle!: string;
-  @Input() dateTime!: Date;
-  @Input() language!: string;
-  @Input() screenName!: string;
+  session!: Session;
   @Input() seats: string[] = [];
   @Input() totalPrice!: number;
 
   confirmReservation(): void {
-    // Aquí haces la llamada al servicio que guarda la reserva en el backend
+    // Call to the service that saves the reservation in the backend
   }
 }

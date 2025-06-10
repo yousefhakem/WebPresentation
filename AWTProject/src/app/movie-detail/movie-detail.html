@@ -1,6 +1,16 @@
 <div class="movie-detail">
-	<div class="info">
+	<div class="header">
+		<h1>CinemaApp</h1>
+		<div class="nav-buttons">
+			<button>Home</button>
+			<button routerLink="/account">My Reservations</button>
+			<button routerLink="/login">Login</button>
 
+		</div>
+	</div>
+	<div class="info">
+		<img class="poster" src="{{ movie.posterUrl }}">
+		<h3 class="title">{{ movie.title }}</h3>
 	</div>
 	<div class="sessions">
 		<app-session-card *ngFor="let session of sessions" [session]="session"></app-session-card>
