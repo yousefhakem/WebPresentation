@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+const ctrlSeats = require('../controllers/seatController');
+const { authenticate } = require('../middleware/authMiddleware');
+const { authorize } = require('../middleware/roleMiddleware');
+router.get('/', ctrlSeats.getAll);
+router.get('/:id', ctrlSeats.getById);
+router.post('/', authenticate, authorize('ADMIN'), ctrlSeats.create);
+router.put('/:id', authenticate, authorize('ADMIN'), ctrlSeats.update);
+router.delete('/:id', authenticate, authorize('ADMIN'), ctrlSeats.remove);
+module.exports = router;

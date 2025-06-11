@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+const ctrlScreenings = require('../controllers/screeningController');
+const { authenticate } = require('../middleware/authMiddleware');
+const { authorize } = require('../middleware/roleMiddleware');
+router.get('/', ctrlScreenings.getAll);
+router.get('/:id', ctrlScreenings.getById);
+router.post('/', authenticate, authorize('ADMIN'), ctrlScreenings.create);
+router.put('/:id', authenticate, authorize('ADMIN'), ctrlScreenings.update);
+router.delete('/:id', authenticate, authorize('ADMIN'), ctrlScreenings.remove);
+module.exports = router;
