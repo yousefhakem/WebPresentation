@@ -7,10 +7,10 @@ import { Session } from '../models/session.model';
   providedIn: 'root'
 })
 export class SessionsService {
-  private baseURL = 'http://localhost:8080'
+  private baseURL = 'http://localhost:3000'
   constructor(private http: HttpClient) { }
 
-  getSessionsByMovieID(id: number): Observable<Session[]> {
-    return this.http.get<Session[]>(this.baseURL + '/sessions/' + id);
+  getSessionsByMovieID(id: string): Observable<Session[]> {
+    return this.http.get<Session[]>(this.baseURL + '/api/screening/' + id);
   }
 }

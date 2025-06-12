@@ -1,15 +1,22 @@
 <div class="header">
 	<h1>CinemaApp</h1>
 	<div class="nav-buttons">
-		<button>Home</button>
+		<button routerLink="/">Home</button>
 		<button routerLink="/account">My Reservations</button>
 		<button routerLink="/login">Login</button>
 
 	</div>
 </div>
 <div class="content">
-	<app-movie-card class="movie-card" *ngFor="let movie of movies"/>
+  <p *ngIf="!movies.length">No hay películas.</p>
+  <app-movie-card
+    class="movie-card"
+    *ngFor="let movie of movies"
+    [movie]="movie">
+  </app-movie-card>
 </div>
+
+
 <div class="footer">
 	<p>2025</p>
 </div>

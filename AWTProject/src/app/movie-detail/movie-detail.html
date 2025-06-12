@@ -2,14 +2,13 @@
 	<div class="header">
 		<h1>CinemaApp</h1>
 		<div class="nav-buttons">
-			<button>Home</button>
+			<button routerLink="/home">Home</button>
 			<button routerLink="/account">My Reservations</button>
 			<button routerLink="/login">Login</button>
 
 		</div>
 	</div>
 	<div class="info">
-		<img class="poster" src="{{ movie.posterUrl }}">
 		<h3 class="title">{{ movie.title }}</h3>
 	</div>
 	<div class="sessions">

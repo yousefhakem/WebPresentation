@@ -1,17 +1,20 @@
-require('dotenv').config()
-const express = require('express');
-const { sequelize } = require('./models/Index');
-const authRouter = require('./routes/auth');
-const movieRouter = require('./routes/movies');
-const reservationsRouter = require('./routes/reservations');
-const roomsRouter = require('./routes/rooms');
-const screeningRouter = require('./routes/screening');
-const seatsRouter = require('./routes/seats');
-const ticketsRouter = require('./routes/tickets');
+// app.js
+import dotenv from 'dotenv';
+dotenv.config();
 
+import express from 'express';
+import { sequelize } from './models/Index.js';
+import authRouter from './routes/auth.js';
+import movieRouter from './routes/movies.js';
+import reservationsRouter from './routes/reservations.js';
+import roomsRouter from './routes/rooms.js';
+import screeningRouter from './routes/screening.js';
+import seatsRouter from './routes/seats.js';
+import ticketsRouter from './routes/tickets.js';
 
-
+import cors from 'cors';
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/movies', movieRouter);

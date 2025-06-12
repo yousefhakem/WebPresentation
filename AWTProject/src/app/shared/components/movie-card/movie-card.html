@@ -1,6 +1,5 @@
 <div class="movie-card">
-	<img [src]="movie.posterUrl">
 	<h3>{{movie.title}}</h3>
 	<p>{{movie.duration}}</p>
-	<button routerLink="/movies/{{movie.id}}">Details</button>
+	<button [routerLink]="['/movies', movie.id]">Details</button>
 </div>

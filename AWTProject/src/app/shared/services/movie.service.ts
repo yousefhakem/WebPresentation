@@ -7,13 +7,13 @@ import { Movie } from '../models/movie.model'; // Ajusta si el path difiere
   providedIn: 'root'
 })
 export class MovieService {
-  private baseURL = 'http://localhost:8080'
+  private baseURL = 'http://localhost:3000'
   constructor(private http: HttpClient) { }
 
   getMovies(): Observable<Movie[]> {
     return this.http.get<Movie[]>(this.baseURL + '/api/movies'); // Ajusta la URL a tu backend
   }
-  getMovieByID(id: number): Observable<Movie> {
-    return this.http.get<Movie>(this.baseURL + '/api/movie/' + id);
+  getMovieByID(id: string): Observable<Movie> {
+    return this.http.get<Movie>(this.baseURL + '/api/movies/' + id);
   }
 }
