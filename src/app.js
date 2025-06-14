@@ -20,7 +20,10 @@ app.use('/api/auth', authRouter);
 app.use('/api/movies', movieRouter);
 app.use('/api/resevations', reservationsRouter);
 app.use('/api/rooms', roomsRouter);
-app.use('/api/screening', screeningRouter);
+app.use(
+  '/api/movies/:movieId/screenings',
+  screeningRouter
+);
 app.use('/api/seats', seatsRouter);
 app.use('/api/tickets', ticketsRouter);
 

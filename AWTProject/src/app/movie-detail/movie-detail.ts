@@ -36,10 +36,12 @@ export class MovieDetail implements OnInit {
       console.log("Loaded movie:", movie);
     });
 
-    this.sessionsService.getSessionsByMovieID(this.movieID).subscribe(sessions => {
-      this.sessions = sessions;
-      this.cdr.detectChanges();
-    });
+    this.sessionsService.getSessionsByMovieID(this.movieID)
+      .subscribe(sessions => {
+        this.sessions = sessions;
+        this.cdr.detectChanges();
+        console.log("Sessions: ", sessions)
+      });
   }
 
 

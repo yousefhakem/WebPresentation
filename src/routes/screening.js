@@ -1,11 +1,19 @@
+// routes/screening.js
 const express = require('express');
-const router = express.Router();
-const ctrlScreenings = require('../controllers/screeningController');
+const router  = express.Router({ mergeParams: true }); // <— importante
+const ctrl    = require('../controllers/screeningController');
 const { authenticate } = require('../middleware/authMiddleware');
-const { authorize } = require('../middleware/roleMiddleware');
-router.get('/', ctrlScreenings.getAll);
-router.get('/:id', ctrlScreenings.getById);
-router.post('/', authenticate, authorize('ADMIN'), ctrlScreenings.create);
-router.put('/:id', authenticate, authorize('ADMIN'), ctrlScreenings.update);
-router.delete('/:id', authenticate, authorize('ADMIN'), ctrlScreenings.remove);
+const { authorize }   = require('../middleware/roleMiddleware');
+
+router.get('/', ctrl.getByMovieId);     // renombra getAll → getByMovieId
+
+
+router.get('/:id',ctrl.getById);          // consulta un screening concreto dentro de la movie
+
+
+// Resto de rutas admin…
+router.post('/', authenticate, authorize('ADMIN'), ctrl.create);
+router.put('/:id', authenticate, authorize('ADMIN'), ctrl.update);
+router.delete('/:id', authenticate, authorize('ADMIN'), ctrl.remove);
+
 module.exports = router;

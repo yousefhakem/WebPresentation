@@ -1,8 +1,7 @@
+import { Room } from './room.model';
+
 export interface Session {
-	sessionId: number;
-	movieId: number;
-	dateTime: Date;
-	language: string;
-	isSubtitled: boolean;
-	screenName: string;
+  id: string;
+  datetime: string;
+  Room: Room;
 }

@@ -1,21 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Room } from '../models/room.model';
 import { Observable } from 'rxjs';
-import { Session } from '../models/session.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SessionsService {
+export class RoomService {
+
   private baseURL = 'http://localhost:3000'
   constructor(private http: HttpClient) { }
 
-  // sessions.service.ts
-getSessionsByMovieID(movieId: string): Observable<Session[]> {
-  return this.http.get<Session[]>(
-    `/api/movies/${movieId}/screenings`
-  );
-}
-
-
+  getRoomByID(id: string): Observable<Room> {
+    return this.http.get<Room>(this.baseURL + '/api/rooms/' + id);
+  }
 }

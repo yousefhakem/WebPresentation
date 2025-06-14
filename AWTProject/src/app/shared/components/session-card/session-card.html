@@ -2,11 +2,11 @@
 	<div class="info">
 		<div class="session-card">
 			<div class="info">
-				<span class="time">{{ session.dateTime}}</span>
-				<span>{{ session.language }} {{ session.isSubtitled ? '(Subtitled)' : '' }}</span>
-				<span>Screen: {{ session.screenName }}</span>
+				<span class="time">{{ session.datetime}}</span>
+				<span *ngIf="session.Room; else loading">Screen: {{ session.Room.name }}</span>
+				 <ng-template #loading><em>Loading room…</em></ng-template>
 			</div>
-			<button class="book-button" [routerLink]="['/sessions', session.sessionId, 'seats']">
+			<button class="book-button" [routerLink]="['/sessions', session.id, 'seats']">
 				Book
 			</button>
 		</div>
