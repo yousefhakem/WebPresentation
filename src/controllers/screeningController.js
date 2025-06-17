@@ -1,8 +1,8 @@
-const { Screening } = require('../models/Index');
+const { Screening, Room } = require('../models/Index');
 
 exports.getAll = async (req, res) => {
-	const items = await Screening.findAll();
-	res.json(items);
+  const items = await Screening.findAll();
+  res.json(items);
 };
 
 exports.getByMovieId = async (req, res) => {
@@ -10,15 +10,15 @@ exports.getByMovieId = async (req, res) => {
   try {
     const sessions = await Screening.findAll({
       where: { movieId },
-      include: [{ model: Room, attributes: ['id','name','seatMap'] }],
-      order: [['datetime','ASC']]
+      include: [{ model: Room, attributes: ['id', 'name', 'seatMap'] }],
+      order: [['datetime', 'ASC']]
     });
     if (!sessions.length) {
       return res.status(404).json({ message: 'No screenings for this movie' });
     }
     res.json(sessions);
   } catch (err) {
-    console.error(err);
+    console.error('Error fetching screenings:', err);
     res.status(500).json({ message: 'Internal server error' });
   }
 };
@@ -38,18 +38,18 @@ exports.getById = async (req, res) => {
   }
 };
 exports.create = async (req, res) => {
-	const item = await Screening.create(req.body);
-	res.status(201).json(item);
+  const item = await Screening.create(req.body);
+  res.status(201).json(item);
 };
 exports.update = async (req, res) => {
-	const item = await Screening.findByPk(req.params.id);
-	if (!item) return res.status(404).json({ message: 'Not found' });
-	await item.update(req.body);
-	res.json(item);
+  const item = await Screening.findByPk(req.params.id);
+  if (!item) return res.status(404).json({ message: 'Not found' });
+  await item.update(req.body);
+  res.json(item);
 };
 exports.remove = async (req, res) => {
-	const item = await Screening.findByPk(req.params.id);
-	if (!item) return res.status(404).json({ message: 'Not found' });
-	await item.destroy();
-	res.status(204).end();
+  const item = await Screening.findByPk(req.params.id);
+  if (!item) return res.status(404).json({ message: 'Not found' });
+  await item.destroy();
+  res.status(204).end();
 };

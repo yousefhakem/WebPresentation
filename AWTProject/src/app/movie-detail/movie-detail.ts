@@ -2,19 +2,19 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Session } from '../shared/models/session.model';
 import { SessionCard } from "../shared/components/session-card/session-card";
 import { Movie } from '../shared/models/movie.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MovieService } from '../shared/services/movie.service';
 import { SessionsService } from '../shared/services/sessions.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-movie-detail',
-  imports: [SessionCard, CommonModule],
+  imports: [SessionCard, CommonModule, RouterModule],
   templateUrl: './movie-detail.html',
   styleUrl: './movie-detail.scss'
 })
 export class MovieDetail implements OnInit {
-  sessions: Session[] = [];
+  sessions!: Session[];
   movie!: Movie;
   movieID!: string;
 

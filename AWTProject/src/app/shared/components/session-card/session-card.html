@@ -2,7 +2,7 @@
 	<div class="info">
 		<div class="session-card">
 			<div class="info">
-				<span class="time">{{ session.datetime}}</span>
+				<span class="time">{{ session.datetime | date:'dd/MM/yyyy HH:mm'}}</span>
 				<span *ngIf="session.Room; else loading">Screen: {{ session.Room.name }}</span>
 				 <ng-template #loading><em>Loading room…</em></ng-template>
 			</div>
@@ -12,5 +12,5 @@
 		</div>
 
 	</div>
-	<button class="book-button" routerLink="reservation/">Book Now</button>
+	<button class="book-button" [routerLink]="['/reservation']">Book Now</button>
 </div>

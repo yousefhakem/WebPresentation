@@ -18,16 +18,16 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/movies', movieRouter);
-app.use('/api/resevations', reservationsRouter);
+app.use('/api/reservations', reservationsRouter);
 app.use('/api/rooms', roomsRouter);
-app.use(
+/*app.use(
   '/api/movies/:movieId/screenings',
   screeningRouter
-);
+);*/
 app.use('/api/seats', seatsRouter);
 app.use('/api/tickets', ticketsRouter);
 
-sequelize.sync().then(() => {
+sequelize.sync({alter: false}).then(() => {
   console.log('Database & tables created!');
   app.listen(process.env.PORT||3000, ()=>console.log('🚀 up'));
 }).catch((err) => {

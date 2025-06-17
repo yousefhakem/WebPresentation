@@ -13,7 +13,7 @@ export class SessionsService {
   // sessions.service.ts
 getSessionsByMovieID(movieId: string): Observable<Session[]> {
   return this.http.get<Session[]>(
-    `/api/movies/${movieId}/screenings`
+    this.baseURL + `/api/movies/${movieId}/screenings/`
   );
 }
 
