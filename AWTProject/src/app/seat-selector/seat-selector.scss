@@ -13,16 +13,26 @@
     transition: 0.2s;
 
     &.selected {
-      background-color: #005caa;
+      background-color: #d3d3d3; /* gris claro */
+      color: #000; /* para que el texto se vea bien */
     }
 
     &.occupied {
       background-color: #757575;
       cursor: not-allowed;
+      color: #fff;
     }
 
     &:hover:not(.occupied):not(.selected) {
       background-color: #90caf9;
+    }
+
+    p {
+      margin: 0;
+      font-size: 10px;
+      text-align: center;
+      line-height: 30px; /* para centrar verticalmente */
+      user-select: none;
     }
   }
 }

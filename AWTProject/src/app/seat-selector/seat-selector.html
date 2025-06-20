@@ -3,8 +3,8 @@
 
   <div class="screen">Screen</div>
 
-  <div class="seats-grid">
-    <div 
+  <div class="seat-grid">
+    <div
       *ngFor="let seat of seats"
       class="seat"
       [ngClass]="{
@@ -13,7 +13,7 @@
       }"
       (click)="toggleSeat(seat)"
     >
-      <p>{{ seat.row }} {{seat.number}}</p>
+      <p>{{ seat.row }}, {{ seat.number }}</p>
     </div>
   </div>
 

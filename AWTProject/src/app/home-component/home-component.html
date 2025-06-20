@@ -3,17 +3,14 @@
 	<div class="nav-buttons">
 		<button routerLink="/">Home</button>
 		<button routerLink="/account">My Reservations</button>
-		<button routerLink="/login">Login</button>
-
+		<button *ngIf="!auth.isLoggedIn()" (click)="goToLogin()">Iniciar sesión</button>
+		<button *ngIf="auth.isLoggedIn()" (click)="auth.logout()">Cerrar sesión</button>
 	</div>
 </div>
 <div class="content">
-  <p *ngIf="!movies.length">No hay películas.</p>
-  <app-movie-card
-    class="movie-card"
-    *ngFor="let movie of movies"
-    [movie]="movie">
-  </app-movie-card>
+	<p *ngIf="!movies.length">No hay películas.</p>
+	<app-movie-card class="movie-card" *ngFor="let movie of movies" [movie]="movie">
+	</app-movie-card>
 </div>
 
 

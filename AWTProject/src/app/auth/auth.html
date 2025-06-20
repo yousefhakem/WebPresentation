@@ -1,0 +1,24 @@
+<div class="auth-container">
+  <h2>{{ isLoginMode ? 'Log in' : 'Register' }}</h2>
+
+  <form (ngSubmit)="submit()">
+    <div *ngIf="!isLoginMode">
+      <label for="name">Name</label>
+      <input type="text" id="name" [(ngModel)]="name" name="name" required />
+    </div>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" [(ngModel)]="email" name="email" required />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" [(ngModel)]="password" name="password" required />
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+
+    <button type="submit">{{ isLoginMode ? 'Enter' : 'Register' }}</button>
+  </form>
+
+  <p (click)="toggleMode()" class="toggle">
+    {{ isLoginMode ? 'Do not have an account? Register' : 'You have an account? Login' }}
+  </p>
+</div>

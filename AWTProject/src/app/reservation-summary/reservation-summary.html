@@ -2,12 +2,17 @@
   <h2>Reservation Summary</h2>
 
   <div class="movie-info">
-    <p><strong>Movie:</strong> {{ movieTitle }}</p>
-    <p><strong>Date:</strong> {{ session.datetime}}</p>
+    <p><strong>Movie:</strong> {{ movie.title }}</p>
+    <p><strong>Date:</strong> {{ session.datetime | date:'dd/MM/yyyy HH:mm'}}</p>
   </div>
-
   <div class="seats-info">
-    <p><strong>Seats:</strong> {{ seats.join(', ') }}</p>
+    <button [routerLink]="['/seats', movie.id, session.Room.id, session.id]">Select your seats</button>
+    <p><strong>Seats:</strong>
+      <span *ngFor="let seat of seats; let last = last">
+        ({{ seat.row }}, {{ seat.number }})<span *ngIf="!last">, </span>
+      </span>
+    </p>
+
     <p><strong>Total:</strong> €{{ totalPrice }}</p>
   </div>
 

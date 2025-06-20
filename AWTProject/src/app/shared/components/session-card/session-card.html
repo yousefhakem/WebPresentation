@@ -6,11 +6,8 @@
 				<span *ngIf="session.Room; else loading">Screen: {{ session.Room.name }}</span>
 				 <ng-template #loading><em>Loading room…</em></ng-template>
 			</div>
-			<button class="book-button" [routerLink]="['/sessions', session.id, 'seats']">
-				Book
-			</button>
 		</div>
 
 	</div>
-	<button class="book-button" [routerLink]="['/reservation']">Book Now</button>
+	<button class="book-button" [routerLink]="['/reservation', movieID, session.id]">Book Now</button>
 </div>

@@ -15,6 +15,10 @@ getSessionsByMovieID(movieId: string): Observable<Session[]> {
   return this.http.get<Session[]>(
     this.baseURL + `/api/movies/${movieId}/screenings/`
   );
+};
+
+getSessionsbyID(movieID: string, sessionId: string): Observable<Session> {
+  return this.http.get<Session>(this.baseURL + `/api/movies/${movieID}/screenings/${sessionId}`);
 }
 
 

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class SessionCard {
   @Input() session!: Session;
+  @Input() movieID!: string;
 
 
 }

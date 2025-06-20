@@ -9,6 +9,12 @@ exports.getById = async (req, res) => {
     if (!seat) return res.status(404).json({ message: 'Not found' });
     res.json(seat);
 };
+exports.getByRoomId = async (req, res) => {
+    const { roomId } = req.params;
+    const seats = await Seat.findAll({ where: { roomId } });
+    res.json(seats);
+};
+
 exports.create = async (req, res) => {
     const seat = await Seat.create(req.body);
     res.status(201).json(seat);

@@ -15,6 +15,6 @@
 		<p>{{movie.rating}}</p>
 	</div>
 	<div class="sessions">
-		<app-session-card *ngFor="let session of sessions" [session]="session"></app-session-card>
+		<app-session-card *ngFor="let session of sessions" [session]="session" [movieID]="movie.id"></app-session-card>
 	</div>
 </div>
