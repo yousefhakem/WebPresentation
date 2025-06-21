@@ -1,6 +1,6 @@
 .seat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 30px);
+  grid-template-columns: repeat(10, 30px);
   gap: 0.4rem;
   justify-content: center;
 

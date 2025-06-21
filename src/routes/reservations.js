@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ctrlReservations = require('../controllers/reservationController');
 const { authenticate } = require('../middleware/authMiddleware');
+console.log("Estamos en routes/reservation");
 router.get('/', authenticate, ctrlReservations.getAll);
 router.get('/:id', authenticate, ctrlReservations.getById);
 router.post('/', authenticate, ctrlReservations.create);

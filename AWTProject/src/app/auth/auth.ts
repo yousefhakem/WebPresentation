@@ -21,8 +21,8 @@ export class Auth {
   returnTo = '/';
 
   constructor(
-    private http: HttpClient, 
-    private router: Router, 
+    private http: HttpClient,
+    private router: Router,
     private route: ActivatedRoute,
     private authService: AuthService
   ) { }
@@ -48,10 +48,12 @@ export class Auth {
     this.http.post<any>(url, payload).subscribe({
       next: (response) => {
         if (response.token) {
-          this.authService.login(response.token);
+          localStorage.setItem('token', response.token); // Sobrescribe token viejo
+          this.authService.login(response.token);         // Si hace algo más
           this.router.navigate(['/home']);
         } else {
-          console.log("Successful Registration, now login");
+          localStorage.removeItem('token'); // Limpia tokens antiguos tras registro
+          console.log("Successful registration, please log in.");
         }
       },
       error: (err) => {
@@ -59,4 +61,5 @@ export class Auth {
       }
     });
   }
+
 }

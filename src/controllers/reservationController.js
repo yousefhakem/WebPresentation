@@ -10,12 +10,26 @@ exports.getById = async (req, res) => {
     res.json(item);
 };
 exports.create = async (req, res) => {
-    // expects { userId, screeningId, seatIds: [] }
-    const { userId, screeningId, seatIds } = req.body;
+  try {
+    const { seatIds, screeningId } = req.body;
+    const userId = req.user.id;                // ← lo coges del middleware
+    console.log("Creando reserva para userId=", userId);
+
     const reservation = await Reservation.create({ userId, screeningId });
-    await Promise.all(seatIds.map(id => ReservationSeat.create({ reservationId: reservation.id, seatId: id })));
+
+    await Promise.all(
+      seatIds.map(id =>
+        ReservationSeat.create({ reservationId: reservation.id, seatId: id })
+      )
+    );
+
     res.status(201).json(reservation);
+  } catch (error) {
+    console.error('Error creando reserva:', error);
+    res.status(500).json({ message: error.message });
+  }
 };
+
 exports.update = async (req, res) => {
     const item = await Reservation.findByPk(req.params.id);
     if (!item) return res.status(404).json({ message: 'Not found' });
