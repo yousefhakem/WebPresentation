@@ -1,13 +1,25 @@
 const { Reservation, Seat, ReservationSeat, Ticket } = require('../models/Index');
 
 exports.getAll = async (req, res) => {
-    const list = await Reservation.findAll({ include: [Seat, Ticket] });
+  const list = await Reservation.findAll({ include: [Seat, Ticket] });
+  res.json(list);
+};
+exports.getAllForUser = async (req, res) => {
+  try {
+    const list = await Reservation.findAll({
+      where: { userId: req.user.id },
+      include: [Seat, Ticket]
+    });
     res.json(list);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: err.message });
+  }
 };
 exports.getById = async (req, res) => {
-    const item = await Reservation.findByPk(req.params.id, { include: [Seat, Ticket] });
-    if (!item) return res.status(404).json({ message: 'Not found' });
-    res.json(item);
+  const item = await Reservation.findByPk(req.params.id, { include: [Seat, Ticket] });
+  if (!item) return res.status(404).json({ message: 'Not found' });
+  res.json(item);
 };
 exports.create = async (req, res) => {
   try {
@@ -31,14 +43,14 @@ exports.create = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-    const item = await Reservation.findByPk(req.params.id);
-    if (!item) return res.status(404).json({ message: 'Not found' });
-    await item.update(req.body);
-    res.json(item);
+  const item = await Reservation.findByPk(req.params.id);
+  if (!item) return res.status(404).json({ message: 'Not found' });
+  await item.update(req.body);
+  res.json(item);
 };
 exports.remove = async (req, res) => {
-    const item = await Reservation.findByPk(req.params.id);
-    if (!item) return res.status(404).json({ message: 'Not found' });
-    await item.destroy();
-    res.status(204).end();
+  const item = await Reservation.findByPk(req.params.id);
+  if (!item) return res.status(404).json({ message: 'Not found' });
+  await item.destroy();
+  res.status(204).end();
 };

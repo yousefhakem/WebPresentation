@@ -2,13 +2,13 @@
 	<h1>CinemaApp</h1>
 	<div class="nav-buttons">
 		<button routerLink="/">Home</button>
-		<button routerLink="/account">My Reservations</button>
-		<button *ngIf="!auth.isLoggedIn()" (click)="goToLogin()">Iniciar sesión</button>
-		<button *ngIf="auth.isLoggedIn()" (click)="auth.logout()">Cerrar sesión</button>
+		<button [routerLink]="['/account']">My reservations</button>
+		<button *ngIf="!auth.isLoggedIn()" (click)="goToLogin()">Log in</button>
+		<button *ngIf="auth.isLoggedIn()" (click)="auth.logout()"> Log out</button>
 	</div>
 </div>
 <div class="content">
-	<p *ngIf="!movies.length">No hay películas.</p>
+	<p *ngIf="!movies.length">There are no movies currently showing. </p>
 	<app-movie-card class="movie-card" *ngFor="let movie of movies" [movie]="movie">
 	</app-movie-card>
 </div>

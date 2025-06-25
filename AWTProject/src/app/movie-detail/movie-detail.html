@@ -1,13 +1,13 @@
-<div class="movie-detail">
-	<div class="header">
-		<h1>CinemaApp</h1>
-		<div class="nav-buttons">
-			<button routerLink="/home">Home</button>
-			<button routerLink="/account">My Reservations</button>
-			<button routerLink="/login">Login</button>
+<div class="header">
+	<h1>CinemaApp</h1>
+	<div class="nav-buttons">
+		<button routerLink="/home">Home</button>
+		<button *ngIf="!auth.isLoggedIn()" (click)="goToLogin()">Log in</button>
+		<button *ngIf="auth.isLoggedIn()" (click)="auth.logout()"> Log out</button>
 
-		</div>
 	</div>
+</div>
+<div class="movie-detail">
 	<div class="info">
 		<h3 class="title">{{ movie.title }}</h3>
 		<p>{{movie.description}}</p>

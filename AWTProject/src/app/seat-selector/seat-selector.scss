@@ -1,3 +1,31 @@
+// HEADER
+.header {
+	background-color: #005caa;
+	color: white;
+	padding: 1rem 2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.nav-buttons {
+		display: flex;
+		gap: 1rem;
+
+		button {
+			background-color: transparent;
+			border: none;
+			color: white;
+			font-weight: bold;
+			cursor: pointer;
+			transition: font-size 0.2s ease;
+
+			&:hover {
+				text-decoration: underline;
+				font-size: 1.1em
+			}
+		}
+	}
+}
 .seat-grid {
   display: grid;
   grid-template-columns: repeat(10, 30px);

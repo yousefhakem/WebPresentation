@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Seat } from '../shared/models/seat.model';
 import { SeatsService } from '../shared/services/seats.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-seat-selector',
@@ -22,7 +23,8 @@ export class SeatSelector implements OnInit {
     private seatService: SeatsService,
     private router: Router,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +38,10 @@ export class SeatSelector implements OnInit {
       console.log("loaded seats: ", seats);
     }
     )
+  }
+
+  goToLogin() {
+    this.router.navigate(['/auth'], { queryParams: { returnUrl: '/' } });
   }
 
   isSelected(seat: Seat): boolean {

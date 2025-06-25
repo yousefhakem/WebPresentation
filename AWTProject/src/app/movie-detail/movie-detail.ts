@@ -2,10 +2,11 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Session } from '../shared/models/session.model';
 import { SessionCard } from "../shared/components/session-card/session-card";
 import { Movie } from '../shared/models/movie.model';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MovieService } from '../shared/services/movie.service';
 import { SessionsService } from '../shared/services/sessions.service';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -22,8 +23,14 @@ export class MovieDetail implements OnInit {
     private route: ActivatedRoute,
     private movieService: MovieService,
     private sessionsService: SessionsService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public auth: AuthService,
+    private router: Router
   ) { }
+
+  goToLogin() {
+    this.router.navigate(['/auth'], { queryParams: { returnUrl: '/' } });
+  }
 
   ngOnInit(): void {
     this.movieID = this.route.snapshot.paramMap.get("id")!;

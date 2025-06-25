@@ -4,6 +4,7 @@ const ctrlReservations = require('../controllers/reservationController');
 const { authenticate } = require('../middleware/authMiddleware');
 console.log("Estamos en routes/reservation");
 router.get('/', authenticate, ctrlReservations.getAll);
+router.get('/user', authenticate, ctrlReservations.getAllForUser);
 router.get('/:id', authenticate, ctrlReservations.getById);
 router.post('/', authenticate, ctrlReservations.create);
 router.put('/:id', authenticate, ctrlReservations.update);

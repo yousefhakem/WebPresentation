@@ -1,3 +1,11 @@
+<div class="header">
+  <h1>CinemaApp</h1>
+  <div class="nav-buttons">
+    <button routerLink="/">Home</button>
+    <button *ngIf="!auth.isLoggedIn()" (click)="goToLogin()">Log in</button>
+    <button *ngIf="auth.isLoggedIn()" (click)="auth.logout()"> Log out</button>
+  </div>
+</div>
 <div class="reservation-summary">
   <h2>Reservation Summary</h2>
 
@@ -12,11 +20,18 @@
         ({{ seat.row }}, {{ seat.number }})<span *ngIf="!last">, </span>
       </span>
     </p>
-
-    <p><strong>Total:</strong> €{{ totalPrice }}</p>
   </div>
 
   <div class="confirm-button">
     <button (click)="confirmReservation()">Confirm</button>
   </div>
+
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
 </div>

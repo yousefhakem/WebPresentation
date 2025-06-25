@@ -1,0 +1,27 @@
+<div class="header">
+	<h1>CinemaApp</h1>
+	<div class="nav-buttons">
+		<button routerLink="/">Home</button>
+		<button *ngIf="!auth.isLoggedIn()" (click)="goToLogin()">Log in</button>
+		<button *ngIf="auth.isLoggedIn()" (click)="auth.logout()"> Log out</button>
+	</div>
+</div>
+<div class="reservations">
+
+	<h2>My Reservations</h2>
+	<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+	<div *ngIf="reservations.length==0 && error" class="empty">
+		You still don't have any reservations
+	</div>
+	<ul *ngIf="reservations.length">
+		<li *ngFor="let r of reservations" class="reservation-card">
+			<p><strong>Date:</strong> {{ r.timestamp | date:'short' }}</p>
+			<p><strong>State:</strong> {{ r.status }}</p>
+			<p><strong>Seats:</strong>
+				<span *ngFor="let s of r.Seats; let last = last">
+					{{ s.row }}{{ s.number }}<span *ngIf="!last">, </span>
+				</span>
+			</p>
+		</li>
+	</ul>
+</div>

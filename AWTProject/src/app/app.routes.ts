@@ -4,6 +4,7 @@ import { MovieDetail } from './movie-detail/movie-detail';
 import { ReservationSummary } from './reservation-summary/reservation-summary';
 import { SeatSelector } from './seat-selector/seat-selector';
 import { Auth } from './auth/auth';
+import { UserReservations } from './user-reservations/user-reservations';
 
 export const routes: Routes = [
 	{ path: 'home', component: HomeComponent},
@@ -12,5 +13,6 @@ export const routes: Routes = [
 	{ path: 'movies/:id', component: MovieDetail},
 	{ path: 'reservation/:movieID/:sessionID', component: ReservationSummary},
 	{ path: 'seats/:movieId/:roomId/:sessionId', component: SeatSelector },
+	{ path: 'account', component: UserReservations},
 
 ];
